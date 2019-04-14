@@ -1,0 +1,19 @@
+.gnome-detail {
+  height: 100vh;
+  background: #f5f6fa;
+}
+
+.gnome-detail-back {
+  padding: 20px;
+}
+
+.gnome-detail-back a {
+  padding: 20px 0;
+  text-align: center;
+  text-decoration: none;
+  color: #0097e6;
+}
+
+.gnome-detail-back a:hover {
+  text-decoration: underline;
+}

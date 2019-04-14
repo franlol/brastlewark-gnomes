@@ -19,7 +19,10 @@ class Card extends Component {
             <h2>{gnome.name}</h2>
             <p>{gnome.age} years old</p>
             <p>{gnome.weight.toFixed(1)}kg</p>
-            <Link to={`/${gnome.id}`}>More info</Link>
+            <Link to={{
+              pathname: `/${gnome.id}`,
+              gnome,
+            }}>Details</Link>
           </div>
         </div>
       </div>
