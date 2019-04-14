@@ -1,8 +1,5 @@
 .list-wrap {
   display: flex;
-  /* flex-direction: column; */
-
-  /* margin-top: 20px; */
+  flex-direction: column;
   height: calc(100vh - 82px);
-  background: #f5f6fa;
 }
