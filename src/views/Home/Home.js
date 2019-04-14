@@ -3,11 +3,11 @@ import { List as VList, AutoSizer } from "react-virtualized";
 
 import gnomeService from '../../services/gnome-service';
 
-import Card from '../Card/Card';
+import Card from '../../components/Card/Card';
 
-import './list.css';
+import './home.css';
 
-class List extends Component {
+class Home extends Component {
 
   state = {
     gnomes: [],
@@ -43,7 +43,6 @@ class List extends Component {
   }
 
   printData = ({ index, key, style }) => {
-    console.log(this.state.gnomes[index])
     return <Card style={style} gnome={this.state.gnomes[index]} key={key} />;
   }
 
@@ -52,22 +51,27 @@ class List extends Component {
     const overscanRowCount = 10;
 
     return (
-      <div className="list-wrap">
-        <AutoSizer>
-          {({ width, height }) => {
-            return <VList
-              width={width}
-              height={height}
-              rowHeight={rowHeight}
-              rowRenderer={this.printData}
-              rowCount={this.state.gnomes.length}
-              overscanRowCount={overscanRowCount} />
-          }}
-        </AutoSizer>
-      </div>
+      <>
+        <header>
+          <h1>Header</h1>
+        </header>
+        <div className="list-wrap">
+          <AutoSizer>
+            {({ width, height }) => {
+              return <VList
+                width={width}
+                height={height}
+                rowHeight={rowHeight}
+                rowRenderer={this.printData}
+                rowCount={this.state.gnomes.length}
+                overscanRowCount={overscanRowCount} />
+            }}
+          </AutoSizer>
+        </div>
+      </>
     );
   }
 
 }
 
-export default List;
+export default Home;
