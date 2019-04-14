@@ -31,7 +31,6 @@ const withGnomes = (WrappedComponent) => {
       return (
         <WrappedComponent
           {...this.props}
-          getGnomes={this.getGnomes}
           getByName={this.getByName}
         />
       );
