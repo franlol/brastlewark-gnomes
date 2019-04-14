@@ -8,3 +8,7 @@ body {
   background: #f5f6fa;
   color: #2f3640;
 }
+
+.ReactVirtualized__Grid__innerScrollContainer {
+  padding-bottom: 20px;
+}
