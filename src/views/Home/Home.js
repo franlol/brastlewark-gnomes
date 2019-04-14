@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { List as VList, AutoSizer } from "react-virtualized";
+import queryString from 'query-string'
 
 import gnomeService from '../../services/gnome-service';
 
@@ -22,6 +23,10 @@ class Home extends Component {
 
   componentDidMount = async () => {
     this.getGnomes();
+    const query = queryString.parse(this.props.location.search);
+    if (query.friend !== undefined) {
+      this.strFilter(query.friend);
+    }
   }
 
   getGnomes = async () => {
@@ -49,7 +54,7 @@ class Home extends Component {
     return <Card style={style} gnome={this.state.filtered[index]} key={key} />;
   }
 
-  filter = (str) => {
+  strFilter = (str) => {
     let filtered;
     if (str.length > 0) {
       filtered = this.state.gnomes.filter(gnome => {
@@ -60,7 +65,7 @@ class Home extends Component {
     }
     this.setState({
       filtered
-    })
+    });
   }
 
   render() {
@@ -69,7 +74,7 @@ class Home extends Component {
 
     return (
       <>
-        <Header filter={this.filter} />
+        <Header strFilter={this.strFilter} />
         <div className="list-wrap">
           <AutoSizer>
             {({ width, height }) => {

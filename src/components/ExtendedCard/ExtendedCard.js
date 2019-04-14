@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import './extendedCard.css';
 
@@ -6,12 +7,12 @@ class ExtendedCard extends Component {
 
   getFriends = () => {
     const { gnome } = this.props;
-    return gnome.friends.map((friend, i) => `${friend}${gnome.friends.length > i + 1 ? `, ` : ``}`); 
+    return gnome.friends.map((friend, i) => <Link key={i} to={`/?friend=${friend}`}>{`${friend}${gnome.friends.length > i + 1 ? `, ` : ``}`}</Link>);
   }
 
   getProfessions = () => {
     const { gnome } = this.props;
-    return gnome.professions.map((profession, i) => `${profession}${gnome.professions.length > i + 1 ? `, ` : ``}`); 
+    return gnome.professions.map((profession, i) => <Link key={i} to={`/?profession=${profession}`}>{`${profession}${gnome.professions.length > i + 1 ? `, ` : ``}`}</Link>);
   }
 
   render() {

@@ -9,12 +9,12 @@ class Header extends Component {
   }
 
   inputHandler = (e) => {
-    const { filter } = this.props;
+    const { strFilter } = this.props;
 
-    filter(e.target.value);
+    strFilter(e.target.value);
     this.setState({
       [e.target.name]: e.target.value,
-    })
+    });
   }
 
   render() {
