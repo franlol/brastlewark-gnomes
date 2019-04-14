@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { List as VList, AutoSizer } from "react-virtualized";
 
 import gnomeService from '../../services/gnome-service';
 
 import Card from '../Card/Card';
+
+import './list.css';
 
 class List extends Component {
 
@@ -39,17 +42,29 @@ class List extends Component {
     }
   }
 
-  printData = () => {
-    const { gnomes } = this.state;
-    return gnomes.map((gnome, i) => <Card gnome={gnome} key={i} />);
+  printData = ({ index, key, style }) => {
+    return <Card style={style} gnome={this.state.gnomes[index]} key={key} />;
   }
 
   render() {
-    console.log(this.state)
+    const rowHeight = 350;
+
     return (
-      <div>
-        {this.printData()}
+
+      <div className="list-wrap">
+        <AutoSizer>
+          {({ width, height }) => {
+            return <VList
+              width={width}
+              height={height}
+              rowHeight={rowHeight}
+              rowRenderer={this.printData}
+              rowCount={this.state.gnomes.length}
+              overscanRowCount={10} />
+          }}
+        </AutoSizer>
       </div>
+
     );
   }
 

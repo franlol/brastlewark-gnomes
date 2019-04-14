@@ -4,9 +4,9 @@ class Card extends Component {
 
   render() {
 
-    const {gnome} = this.props;
+    const { gnome, style } = this.props;
     return (
-      <div>
+      <div style={style}>
         <p>Name: {gnome.name}</p>
         <p>Age: {gnome.age}</p>
         <p>Friends: {gnome.friends}</p>
@@ -15,8 +15,8 @@ class Card extends Component {
         <p>Id: {gnome.id}</p>
         <p>Profession: {gnome.professions}</p>
         <p>weight: {gnome.weight}</p>
-        <img src={gnome.thumbnail} />
-        <hr/>
+        <img width="200" src={gnome.thumbnail} alt={gnome.name}/>
+        <hr />
       </div>
     );
 
