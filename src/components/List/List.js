@@ -43,14 +43,15 @@ class List extends Component {
   }
 
   printData = ({ index, key, style }) => {
+    console.log(this.state.gnomes[index])
     return <Card style={style} gnome={this.state.gnomes[index]} key={key} />;
   }
 
   render() {
-    const rowHeight = 350;
+    const rowHeight = 450;
+    const overscanRowCount = 10;
 
     return (
-
       <div className="list-wrap">
         <AutoSizer>
           {({ width, height }) => {
@@ -60,11 +61,10 @@ class List extends Component {
               rowHeight={rowHeight}
               rowRenderer={this.printData}
               rowCount={this.state.gnomes.length}
-              overscanRowCount={10} />
+              overscanRowCount={overscanRowCount} />
           }}
         </AutoSizer>
       </div>
-
     );
   }
 
