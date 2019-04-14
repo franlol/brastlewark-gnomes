@@ -39,13 +39,16 @@ class List extends Component {
     }
   }
 
-
+  printData = () => {
+    const { gnomes } = this.state;
+    return gnomes.map((gnome, i) => <Card gnome={gnome} key={i} />);
+  }
 
   render() {
     console.log(this.state)
     return (
       <div>
-        asd
+        {this.printData()}
       </div>
     );
   }
