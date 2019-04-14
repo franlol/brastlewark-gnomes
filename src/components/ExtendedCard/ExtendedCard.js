@@ -5,14 +5,26 @@ import './extendedCard.css';
 
 class ExtendedCard extends Component {
 
+  state = {
+    gnome: []
+  }
+
+  test = e => {
+    e.preventDefault();
+    console.log(e)
+  }
+  
   getFriends = () => {
     const { gnome } = this.props;
-    return gnome.friends.map((friend, i) => <Link key={i} to={`/?friend=${friend}`}>{`${friend}${gnome.friends.length > i + 1 ? `, ` : ``}`}</Link>);
+
+    return gnome.friends.map((friend, i) => {
+      return <Link onClick={e => this.test(e)} key={i} to={{ pathname: `/` }}>{`${friend}${gnome.friends.length > i + 1 ? `, ` : ``}`}</Link>
+    });
   }
 
   getProfessions = () => {
     const { gnome } = this.props;
-    return gnome.professions.map((profession, i) => <Link key={i} to={`/?profession=${profession}`}>{`${profession}${gnome.professions.length > i + 1 ? `, ` : ``}`}</Link>);
+    return gnome.professions.map((profession, i) => `${profession}${gnome.professions.length > i + 1 ? `, ` : ``}`);
   }
 
   render() {
@@ -20,6 +32,7 @@ class ExtendedCard extends Component {
 
     return (
       <div className="extended-card">
+
         <div className="extended-card-wrap">
           <div className="extended-card-image-wrap">
             <img src={gnome.thumbnail} alt={gnome.name} />

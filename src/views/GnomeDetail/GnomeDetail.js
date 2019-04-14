@@ -12,12 +12,9 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 library.add(faAngleLeft)
 
 class GnomeDetail extends Component {
-
   render() {
-    // If gnome exists (throught Link location param) i save in Gnome const, else i save 'undefined'
     const gnome = this.props.location.gnome !== undefined ? this.props.location.gnome : undefined;
 
-    // If gnome object does not exists (ej: because refresh browser), redirect home, else load page
     return gnome === undefined ?
       <Redirect to='/' />
       :
@@ -32,3 +29,4 @@ class GnomeDetail extends Component {
 }
 
 export default GnomeDetail;
+

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { List as VList, AutoSizer } from "react-virtualized";
-import queryString from 'query-string'
+import { withRouter } from 'react-router'
 
 import gnomeService from '../../services/gnome-service';
 
@@ -23,10 +23,6 @@ class Home extends Component {
 
   componentDidMount = async () => {
     this.getGnomes();
-    const query = queryString.parse(this.props.location.search);
-    if (query.friend !== undefined) {
-      this.strFilter(query.friend);
-    }
   }
 
   getGnomes = async () => {
@@ -56,16 +52,29 @@ class Home extends Component {
 
   strFilter = (str) => {
     let filtered;
+
     if (str.length > 0) {
       filtered = this.state.gnomes.filter(gnome => {
-        return gnome.name.toLowerCase().includes(str.toLowerCase())
+        return gnome.name.trim().toLowerCase().includes(str.trim().toLowerCase())
       });
     } else {
       filtered = this.state.gnomes;
     }
+
     this.setState({
       filtered
     });
+  }
+
+
+  getFriend = () => {
+    if (this.state.isLoaded) {
+      const { friend } = this.props.location;
+      if (friend) {
+        const { id } = this.getByName(friend)[0];
+        this.props.history.push(`/${id}`);
+      }
+    }
   }
 
   render() {
@@ -74,24 +83,23 @@ class Home extends Component {
 
     return (
       <>
-        <Header strFilter={this.strFilter} />
-        <div className="list-wrap">
-          <AutoSizer>
-            {({ width, height }) => {
-              return <VList
-                width={width}
-                height={height}
-                rowHeight={rowHeight}
-                rowRenderer={this.printData}
-                rowCount={this.state.filtered.length}
-                overscanRowCount={overscanRowCount} />
-            }}
-          </AutoSizer>
-        </div>
+          <Header strFilter={this.strFilter} />
+          <div className="list-wrap">
+            <AutoSizer>
+              {({ width, height }) => {
+                return <VList
+                  width={width}
+                  height={height}
+                  rowHeight={rowHeight}
+                  rowRenderer={this.printData}
+                  rowCount={this.state.filtered.length}
+                  overscanRowCount={overscanRowCount} />
+              }}
+            </AutoSizer>
+          </div>
       </>
     );
   }
 
 }
-
-export default Home;
+export default withRouter(Home);
