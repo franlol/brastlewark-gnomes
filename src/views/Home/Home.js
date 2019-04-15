@@ -68,22 +68,10 @@ class Home extends Component {
     });
   }
 
-  getFriend = () => {
-    if (this.state.isLoaded) {
-      const { friend } = this.props.location;
-      if (friend) {
-        const { id } = this.getByName(friend)[0];
-        this.props.history.push(`/${id}`);
-      }
-    }
-  }
-
   render() {
     const rowHeight = 450;
     const overscanRowCount = 10;
     const { isLoaded, error } = this.state;
-    console.log("isLoaded", this.state.isLoaded)
-    console.log("error", this.state.error)
 
     if (error.isError) return <Redirect to="/NoMatch" />;
     if (!isLoaded) return <p>Loading...</p>
