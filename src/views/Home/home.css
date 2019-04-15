@@ -1,11 +1,11 @@
 .list-wrap {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 300px);
+  height: calc(100vh - 216px);
 }
 
 @media (max-width: 450px) {
   .list-wrap {
-    height: calc(100vh - 50px);
+    height: calc(100vh - 144px);
   }
 }

@@ -18,7 +18,7 @@ const withGnomes = (WrappedComponent) => {
         const gnomes = await gnomeService.getGnomes();
         this.setState({ gnomes: gnomes.Brastlewark });
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     }
 

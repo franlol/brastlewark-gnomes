@@ -3,11 +3,11 @@ header {
   flex-direction: column;
   justify-content: space-around;
   background: #2f3640;
-  min-height: 300px;
+  min-height: 200px;
+  max-height: 216px;
 }
 
-h1,
-h5 {
+h1, h5 {
   margin: 0;
   color: #f5f6fa;
   padding-top: 20px;
@@ -20,6 +20,9 @@ h1 {
 
 h5 {
   margin: 0 auto;
+  font-size: 14px;
+  font-weight: lighter;
+  max-width: 760px;
 }
 
 h1 a {
@@ -39,22 +42,13 @@ h1 a {
   font-size: 1em;
 }
 
-@media (min-width: 450px) {
-  h5 {
-    font-size: 20px;
-    font-weight: lighter;
-  }
-}
-
 @media (max-width: 450px) {
   h1 {
     font-size: 3em;
   }
-
   h5 {
     display: none;
   }
-
   header {
     min-height: 50px;
   }
