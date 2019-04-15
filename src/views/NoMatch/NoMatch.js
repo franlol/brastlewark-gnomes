@@ -9,7 +9,7 @@ library.add(faAngleLeft)
 class NoMatch extends Component {
 
   render() {
-    console.log("no match comp")
+
     return (
       <div className="nomatch-wrap">
         <Link className="nomatch-link" to="/"><FontAwesomeIcon icon="angle-left" /> Go back</Link>

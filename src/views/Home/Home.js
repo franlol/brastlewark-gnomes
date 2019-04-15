@@ -85,9 +85,8 @@ class Home extends Component {
     console.log("isLoaded", this.state.isLoaded)
     console.log("error", this.state.error)
 
-    // if (error.isError) {
-    //   return <Redirect to="/NoMatch" />;
-    // }
+    if (error.isError) return <Redirect to="/NoMatch" />;
+    if (!isLoaded) return <p>Loading...</p>
 
     return (
       <>
