@@ -14,19 +14,20 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Routes
 
-Home (/): Show the cards of the gnomes and show a brief detail of them. You can also search using the searchbar.
+Home (/): Show all the gnomes and a brief detail of them. You can also filter using the searchbar.
 
-Detail /gnome/:id): Show all the information of the specific gnome. You can also go directly to the details of her friends!
+Detail (/gnome/:id): Show all the information of the specific gnome. You can also navigate to her friends cards!
 
 404 (/NoMatch): If something goes wrong, you will be redirected here.
 
 #### Behing the scenes
 
-In the Home there are 1337 cards, when scrolling everything is very fluid (specially at smartphone) because DOM only load ~14 cards.
+In the Home there are 1337 cards. When scrolling, everything is very fluid (specially at smartphone) because DOM only load ~14 cards.
 
 Thats because the DOM virtualization:
 
 ![Virtualized](https://github.com/franlol/brastlewark-gnomes/blob/master/virtualized.gif)
+
 
 
 When clicking friend links in any gnome detail, there is a Higher Order Component that inject getByName method.
