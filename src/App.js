@@ -17,7 +17,7 @@ class App extends Component {
 
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/:id" component={GnomeDetail} />
+          <Route exact path="/gnome/:id" component={GnomeDetail} />
           <Route exact path="*" component={NoMatch} />
         </Switch>
 

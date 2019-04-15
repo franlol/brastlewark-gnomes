@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { List as VList, AutoSizer } from "react-virtualized";
+import { Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router'
 
 import gnomeService from '../../services/gnome-service';
@@ -38,6 +39,7 @@ class Home extends Component {
     } catch (err) {
       // if error..
       this.setState({
+        isLoaded: true,
         error: {
           isError: true,
           message: err.message,
@@ -66,7 +68,6 @@ class Home extends Component {
     });
   }
 
-
   getFriend = () => {
     if (this.state.isLoaded) {
       const { friend } = this.props.location;
@@ -80,23 +81,30 @@ class Home extends Component {
   render() {
     const rowHeight = 450;
     const overscanRowCount = 10;
+    const { isLoaded, error } = this.state;
+    console.log("isLoaded", this.state.isLoaded)
+    console.log("error", this.state.error)
+
+    // if (error.isError) {
+    //   return <Redirect to="/NoMatch" />;
+    // }
 
     return (
       <>
-          <Header strFilter={this.strFilter} />
-          <div className="list-wrap">
-            <AutoSizer>
-              {({ width, height }) => {
-                return <VList
-                  width={width}
-                  height={height}
-                  rowHeight={rowHeight}
-                  rowRenderer={this.printData}
-                  rowCount={this.state.filtered.length}
-                  overscanRowCount={overscanRowCount} />
-              }}
-            </AutoSizer>
-          </div>
+        <Header strFilter={this.strFilter} />
+        <div className="list-wrap">
+          <AutoSizer>
+            {({ width, height }) => {
+              return <VList
+                width={width}
+                height={height}
+                rowHeight={rowHeight}
+                rowRenderer={this.printData}
+                rowCount={this.state.filtered.length}
+                overscanRowCount={overscanRowCount} />
+            }}
+          </AutoSizer>
+        </div>
       </>
     );
   }
