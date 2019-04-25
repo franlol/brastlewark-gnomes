@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Switch } from 'react-router';
 
@@ -8,22 +8,19 @@ import Home from './views/Home/Home';
 import GnomeDetail from './views/GnomeDetail/GnomeDetail';
 import NoMatch from './views/NoMatch/NoMatch';
 
-class App extends Component {
+const App = () => {
 
-  render() {
+  return (
+    <Router>
 
-    return (
-      <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/gnome/:id" component={GnomeDetail} />
+        <Route exact path="*" component={NoMatch} />
+      </Switch>
 
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/gnome/:id" component={GnomeDetail} />
-          <Route exact path="*" component={NoMatch} />
-        </Switch>
-
-      </Router>
-    );
-  }
+    </Router>
+  );
 
 }
 

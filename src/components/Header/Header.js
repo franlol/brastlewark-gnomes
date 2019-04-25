@@ -8,7 +8,7 @@ class Header extends Component {
     searchInput: '',
   }
 
-  inputHandler = (e) => {
+  inputHandler = e => {
     const { strFilter } = this.props;
 
     strFilter(e.target.value);

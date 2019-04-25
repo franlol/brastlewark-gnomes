@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
+
+import './noMatch.css';
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
-import './noMatch.css';
 library.add(faAngleLeft)
 
-class NoMatch extends Component {
+const NoMatch = () => {
 
-  render() {
-
-    return (
-      <div className="nomatch-wrap">
-        <Link className="nomatch-link" to="/"><FontAwesomeIcon icon="angle-left" /> Go back</Link>
-
-        <h1 className="nomatch-h1">Something goes wrong</h1>
-      </div>
-    );
-  }
+  return (
+    <div className="nomatch-wrap">
+      <Link className="nomatch-link" to="/"><FontAwesomeIcon icon="angle-left" /> Go back</Link>
+      <h1 className="nomatch-h1">Something goes wrong</h1>
+    </div>
+  );
 
 }
 
